@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next'
-import { useState, useEffect } from 'react'
-import { Building2, Globe, Check } from 'lucide-react'
+import { useState } from 'react'
+import { Building2, Globe, Check, LogOut } from 'lucide-react'
 import { loadSettings, saveSettings, type ClinicSettings } from '@/lib/settings'
+import { supabase } from '@/lib/supabase'
 
 const inputCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75]'
 
@@ -120,7 +121,7 @@ export function Settings() {
         </section>
 
         {/* Save */}
-        <div className="pb-4">
+        <div className="space-y-3 pb-4">
           <button
             onClick={handleSave}
             className="w-full flex items-center justify-center gap-2 text-sm font-medium text-white py-3.5 rounded-xl hover:opacity-90 transition-all"
@@ -134,6 +135,14 @@ export function Settings() {
             ) : (
               'שמירת הגדרות'
             )}
+          </button>
+
+          <button
+            onClick={() => supabase.auth.signOut()}
+            className="w-full flex items-center justify-center gap-2 text-sm font-medium text-red-600 py-3.5 rounded-xl border border-red-200 hover:bg-red-50 transition-all"
+          >
+            <LogOut size={17} />
+            התנתקות
           </button>
         </div>
       </div>
