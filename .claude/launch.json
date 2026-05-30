@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "hydra-dev",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["/Users/ronisbn/hydra app/.claude/run-dev.sh"],
+      "port": 5173
+    }
+  ]
+}
