@@ -1,7 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { AuthProvider } from './lib/auth'
+import { ProtectedRoute } from './components/ProtectedRoute'
 import { Layout } from './components/layout/Layout'
+import { Login } from './pages/Login'
 import { DailyView } from './pages/DailyView'
 import { Clients } from './pages/Clients'
 import { NewClient } from './pages/NewClient'
@@ -24,20 +27,27 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route index element={<DailyView />} />
-          <Route path="clients" element={<Clients />} />
-          <Route path="clients/new" element={<NewClient />} />
-          <Route path="clients/:id" element={<ClientFile />} />
-          <Route path="clients/:id/assessment/new" element={<AssessmentForm />} />
-          <Route path="clients/:id/treatment/new" element={<TreatmentForm />} />
-          <Route path="clients/:id/reports/insurance" element={<InsuranceReport />} />
-          <Route path="clients/:id/reports/vet-letter" element={<VetLetter />} />
-          <Route path="clients/:id/reports/home-exercises" element={<HomeExercises />} />
-          <Route path="settings" element={<Settings />} />
-        </Route>
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }>
+            <Route index element={<DailyView />} />
+            <Route path="clients" element={<Clients />} />
+            <Route path="clients/new" element={<NewClient />} />
+            <Route path="clients/:id" element={<ClientFile />} />
+            <Route path="clients/:id/assessment/new" element={<AssessmentForm />} />
+            <Route path="clients/:id/treatment/new" element={<TreatmentForm />} />
+            <Route path="clients/:id/reports/insurance" element={<InsuranceReport />} />
+            <Route path="clients/:id/reports/vet-letter" element={<VetLetter />} />
+            <Route path="clients/:id/reports/home-exercises" element={<HomeExercises />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   )
 }

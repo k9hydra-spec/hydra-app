@@ -15,11 +15,9 @@ export function Sidebar() {
 
   return (
     <aside className="flex flex-col flex-1 bg-white">
-      <div className="px-5 py-6 border-b border-slate-100">
+      <div className="px-5 py-5 border-b border-slate-100">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-sm" style={{ background: '#1D9E75' }}>
-            H
-          </div>
+          <img src="/logo.png" alt="HYDRA" className="w-10 h-10 rounded-full object-cover shrink-0" />
           <div>
             <p className="font-bold text-slate-800 leading-tight">HYDRA</p>
             <p className="text-xs text-slate-500 leading-tight">קליניקת שיקום</p>

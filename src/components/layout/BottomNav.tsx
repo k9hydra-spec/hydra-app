@@ -14,7 +14,10 @@ export function BottomNav() {
   const { t } = useTranslation()
 
   return (
-    <nav className="md:hidden fixed bottom-0 start-0 end-0 bg-white border-t border-slate-200 z-50 safe-area-pb">
+    <nav
+      className="md:hidden fixed bottom-0 start-0 end-0 bg-white border-t border-slate-200 z-50"
+      style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+    >
       <div className="flex">
         {navItems.map(({ key, icon: Icon, to }) => (
           <NavLink

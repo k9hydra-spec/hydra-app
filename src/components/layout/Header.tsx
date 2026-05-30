@@ -13,23 +13,15 @@ export function Header() {
   }
 
   return (
-    <header className="md:hidden bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between">
-      <div className="flex items-center gap-2">
-        <div
-          className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm"
-          style={{ background: '#1D9E75' }}
-        >
-          H
-        </div>
-        <span className="font-bold text-slate-800">HYDRA</span>
+    <header className="md:hidden bg-white border-b border-slate-200 px-4 py-2.5 flex items-center justify-between sticky top-0 z-40">
+      <div className="flex items-center gap-2 min-w-0">
+        <img src="/logo.png" alt="HYDRA" className="w-9 h-9 rounded-full object-cover shrink-0" />
+        <span className="font-bold text-slate-800 truncate">HYDRA</span>
       </div>
 
       <button
         onClick={toggleLang}
-        className={cn(
-          'text-xs font-semibold px-3 py-1.5 rounded-full border transition-colors',
-          'border-slate-300 text-slate-600 hover:border-[#1D9E75] hover:text-[#1D9E75]'
-        )}
+        className="text-xs font-semibold px-3 py-1.5 rounded-full border border-slate-300 text-slate-600 hover:border-[#1D9E75] hover:text-[#1D9E75] transition-colors shrink-0 ms-2"
       >
         {isHebrew ? 'EN' : 'עב'}
       </button>
