@@ -206,7 +206,7 @@ export function TreatmentForm() {
         ultrasound_performed: form.ultrasound_performed,
         prom_performed: form.prom_performed,
         prom_limbs: promLimbs.length ? promLimbs : undefined,
-        active_exercises: exercises.length ? exercises : undefined,
+        active_exercises: exercises.length ? (exercises as unknown as Record<string, unknown>) : undefined,
         additional_treatments: additionalTreatments.length ? additionalTreatments : undefined,
         treadmill_speed: form.treadmill_speed || undefined,
         treadmill_water_height: form.treadmill_water_height ? Number(form.treadmill_water_height) : undefined,

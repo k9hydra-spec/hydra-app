@@ -43,7 +43,7 @@ export function HomeExercises() {
         // Pre-populate from last treatment's active_exercises
         const last = ts.sort((a, b) => b.date.localeCompare(a.date))[0]
         if (last?.active_exercises) {
-          const exs = last.active_exercises as ExerciseEntry[]
+          const exs = last.active_exercises as unknown as ExerciseEntry[]
           if (Array.isArray(exs)) setExercises(exs)
         }
         if (last?.therapist_name) setTherapistName(last.therapist_name)
