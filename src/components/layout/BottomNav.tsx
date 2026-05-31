@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { CalendarDays, PawPrint, PlusCircle, Settings } from 'lucide-react'
-import { cn } from '@/lib/utils'
 
 const navItems = [
   { key: 'daily', icon: CalendarDays, to: '/' },
@@ -15,8 +14,8 @@ export function BottomNav() {
 
   return (
     <nav
-      className="md:hidden fixed bottom-0 start-0 end-0 bg-white border-t border-slate-200 z-50"
-      style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+      className="md:hidden fixed bottom-0 start-0 end-0 bg-white z-50"
+      style={{ borderTop: '0.5px solid #D0D8E0', paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
       <div className="flex">
         {navItems.map(({ key, icon: Icon, to }) => (
@@ -24,12 +23,8 @@ export function BottomNav() {
             key={key}
             to={to}
             end={to === '/'}
-            className={({ isActive }) =>
-              cn(
-                'flex-1 flex flex-col items-center gap-1 py-2.5 text-xs font-medium transition-colors',
-                isActive ? 'text-[#5BB8C5]' : 'text-slate-500'
-              )
-            }
+            className="flex-1 flex flex-col items-center gap-1 py-2.5 text-xs font-medium transition-colors"
+            style={({ isActive }) => ({ color: isActive ? '#1B3A5C' : '#AAB8C5' })}
           >
             {({ isActive }) => (
               <>

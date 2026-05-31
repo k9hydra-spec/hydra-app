@@ -5,10 +5,13 @@ import { Header, SidebarLangSwitch } from './Header'
 
 export function Layout() {
   return (
-    <div className="flex h-dvh bg-white overflow-hidden">
+    <div className="flex h-dvh overflow-hidden" style={{ background: '#F0F4F8' }}>
 
-      {/* Desktop sidebar — right side in RTL */}
-      <div className="hidden md:flex flex-col w-64 shrink-0 border-s border-slate-200 bg-white overflow-y-auto order-last">
+      {/* Desktop sidebar — first in DOM = right side in RTL */}
+      <div
+        className="hidden md:flex flex-col w-64 shrink-0 bg-white overflow-y-auto"
+        style={{ borderInlineStart: '0.5px solid #D0D8E0' }}
+      >
         <Sidebar />
         <SidebarLangSwitch />
       </div>
@@ -22,8 +25,8 @@ export function Layout() {
         <main
           className="flex-1 overflow-y-auto"
           style={{
-            padding: '20px 16px',
-            paddingBottom: 'calc(80px + env(safe-area-inset-bottom))',
+            padding: '24px 20px',
+            paddingBottom: 'calc(88px + env(safe-area-inset-bottom))',
           }}
         >
           <div className="max-w-2xl mx-auto w-full">

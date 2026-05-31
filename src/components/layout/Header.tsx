@@ -12,17 +12,18 @@ export function Header() {
   }
 
   return (
-    <header className="md:hidden bg-white border-b border-slate-200 sticky top-0 z-40">
-      <div className="flex items-center justify-between px-5 py-3">
+    <header className="md:hidden bg-white sticky top-0 z-40" style={{ borderBottom: '0.5px solid #D0D8E0' }}>
+      <div className="flex items-center justify-between px-5" style={{ paddingTop: 14, paddingBottom: 14 }}>
         <button
           onClick={toggleLang}
-          className="text-xs font-semibold px-3 py-1.5 rounded-full border border-slate-300 text-slate-500 hover:border-[#5BB8C5] hover:text-[#5BB8C5] transition-colors"
+          className="text-xs font-semibold px-3 py-1.5 rounded-full transition-colors"
+          style={{ border: '0.5px solid #D0D8E0', color: '#7A8A9A' }}
         >
           {isHebrew ? 'EN' : 'עב'}
         </button>
-        <img src="/logo.png" alt="HYDRA" className="h-12 w-auto object-contain" />
+        <img src="/logo.png" alt="HYDRA" style={{ height: 46, width: 'auto', objectFit: 'contain' }} />
       </div>
-      <div className="h-3" />
+      <div style={{ height: 6 }} />
     </header>
   )
 }
@@ -39,10 +40,11 @@ export function SidebarLangSwitch() {
   }
 
   return (
-    <div className="hidden md:block px-5 py-4 border-t border-slate-100">
+    <div className="hidden md:block px-5 py-4" style={{ borderTop: '0.5px solid #D0D8E0' }}>
       <button
         onClick={toggleLang}
-        className="w-full text-xs font-semibold px-3 py-2.5 rounded-xl border border-slate-200 text-slate-500 hover:border-[#5BB8C5] hover:text-[#5BB8C5] transition-colors"
+        className="w-full text-xs font-semibold px-3 py-2.5 rounded-xl transition-colors"
+        style={{ border: '0.5px solid #D0D8E0', color: '#7A8A9A' }}
       >
         {isHebrew ? 'Switch to English' : 'עבור לעברית'}
       </button>

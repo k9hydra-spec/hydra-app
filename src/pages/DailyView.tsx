@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next'
-import { PlusCircle, Clock, ChevronLeft, ChevronRight, X, Search, ClipboardList } from 'lucide-react'
+import { PlusCircle, Clock, X, Search, ClipboardList } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { getDailySchedule, addToDailySchedule, removeDailyEntry, getClients } from '@/lib/api'
 import type { Client, DailySchedule } from '@/lib/supabase'
-import { cn } from '@/lib/utils'
 
 const TREATMENT_TYPES = [
   'פגישת ייעוץ (שעה)',
@@ -33,13 +32,14 @@ function formatDateEnglish(iso: string) {
   })
 }
 
-const TREATMENT_COLORS: Record<string, string> = {
-  'פגישת ייעוץ (שעה)': 'bg-purple-50 text-purple-700 border-purple-100',
-  'טיפול משולב פיזיו+הידרו': 'bg-blue-50 text-blue-700 border-blue-100',
-  'פיזיותרפיה (30 דק׳)': 'bg-orange-50 text-orange-700 border-orange-100',
-  'הידרותרפיה (30 דק׳)': 'bg-cyan-50 text-cyan-700 border-cyan-100',
-  'לייזר/שוקוויב (30 דק׳)': 'bg-yellow-50 text-yellow-700 border-yellow-100',
-  'התאמת עזרים (שעה)': 'bg-slate-50 text-slate-700 border-slate-200',
+// Treatment type badge styles
+const TREATMENT_STYLES: Record<string, { bg: string; color: string }> = {
+  'טיפול משולב פיזיו+הידרו': { bg: '#E8EEF4', color: '#1B3A5C' },
+  'פיזיותרפיה (30 דק׳)': { bg: '#DCEEf4', color: '#1B4F6A' },
+  'הידרותרפיה (30 דק׳)': { bg: '#EAF6F9', color: '#1B5A72' },
+  'פגישת ייעוץ (שעה)': { bg: '#EEF0F8', color: '#3A3D8A' },
+  'לייזר/שוקוויב (30 דק׳)': { bg: '#FFF8EC', color: '#7A5500' },
+  'התאמת עזרים (שעה)': { bg: '#F2F4F6', color: '#4A5568' },
 }
 
 function AddClientDialog({ onClose, onAdd }: {
@@ -68,11 +68,11 @@ function AddClientDialog({ onClose, onAdd }: {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/40 z-50 flex items-end md:items-center justify-center p-4">
-      <div className="bg-white rounded-2xl w-full max-w-md shadow-xl">
-        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
-          <h2 className="font-semibold text-slate-800">הוספת לקוח ליום</h2>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600">
+    <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-4" style={{ background: 'rgba(27,58,92,0.35)' }}>
+      <div className="bg-white rounded-2xl w-full max-w-md" style={{ boxShadow: '0 8px 32px rgba(27,58,92,0.15)', border: '0.5px solid #D0D8E0' }}>
+        <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: '0.5px solid #D0D8E0' }}>
+          <h2 className="font-semibold" style={{ color: '#1B3A5C' }}>הוספת לקוח ליום</h2>
+          <button onClick={onClose} style={{ color: '#AAB8C5' }}>
             <X size={20} />
           </button>
         </div>
@@ -81,14 +81,15 @@ function AddClientDialog({ onClose, onAdd }: {
           {!selected ? (
             <div>
               <div className="relative mb-3">
-                <Search size={15} className="absolute start-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                <Search size={14} className="absolute top-1/2 -translate-y-1/2" style={{ color: '#AAB8C5', insetInlineEnd: 11 }} />
                 <input
                   autoFocus
                   type="text"
                   value={query}
                   onChange={e => setQuery(e.target.value)}
                   placeholder="חיפוש לקוח..."
-                  className="w-full border border-slate-200 rounded-lg ps-9 pe-3 py-2.5 text-sm focus:outline-none focus:border-[#5BB8C5]"
+                  className="w-full rounded-lg text-sm focus:outline-none"
+                  style={{ border: '0.5px solid #D0D8E0', padding: '10px 34px 10px 12px', color: '#1B3A5C' }}
                 />
               </div>
               <div className="space-y-1 max-h-52 overflow-y-auto">
@@ -97,59 +98,58 @@ function AddClientDialog({ onClose, onAdd }: {
                     key={c.id}
                     type="button"
                     onClick={() => setSelected(c)}
-                    className="w-full text-start flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-50 transition-colors"
+                    className="w-full text-start flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors"
+                    style={{ color: '#1B3A5C' }}
+                    onMouseEnter={e => (e.currentTarget.style.background = '#EAF6F9')}
+                    onMouseLeave={e => (e.currentTarget.style.background = '')}
                   >
-                    <div
-                      className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
-                      style={{ background: '#5BB8C5' }}
-                    >
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0" style={{ background: '#2A6B8A' }}>
                       {c.pet_name[0]}
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-slate-800">{c.pet_name}</p>
-                      <p className="text-xs text-slate-500">{c.owner_name}</p>
+                      <p className="text-sm font-medium">{c.pet_name}</p>
+                      <p className="text-xs" style={{ color: '#7A8A9A' }}>{c.owner_name}</p>
                     </div>
                   </button>
                 ))}
                 {filtered.length === 0 && (
-                  <p className="text-center text-sm text-slate-400 py-4">לא נמצאו לקוחות</p>
+                  <p className="text-center text-sm py-4" style={{ color: '#AAB8C5' }}>לא נמצאו לקוחות</p>
                 )}
               </div>
             </div>
           ) : (
             <div className="space-y-4">
-              <div className="flex items-center gap-3 bg-[#5BB8C5]/10 rounded-xl px-4 py-3">
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0"
-                  style={{ background: '#5BB8C5' }}
-                >
+              <div className="flex items-center gap-3 rounded-xl px-4 py-3" style={{ background: '#EAF6F9' }}>
+                <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0" style={{ background: '#2A6B8A' }}>
                   {selected.pet_name[0]}
                 </div>
                 <div className="flex-1">
-                  <p className="font-semibold text-slate-800">{selected.pet_name}</p>
-                  <p className="text-xs text-slate-500">{selected.owner_name}</p>
+                  <p className="font-semibold" style={{ color: '#1B3A5C' }}>{selected.pet_name}</p>
+                  <p className="text-xs" style={{ color: '#7A8A9A' }}>{selected.owner_name}</p>
                 </div>
-                <button onClick={() => setSelected(null)} className="text-slate-400 hover:text-slate-600">
+                <button onClick={() => setSelected(null)} style={{ color: '#AAB8C5' }}>
                   <X size={16} />
                 </button>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">שעת הגעה</label>
+                <label className="block text-sm font-medium mb-1.5" style={{ color: '#1B3A5C' }}>שעת הגעה</label>
                 <input
                   type="time"
                   value={time}
                   onChange={e => setTime(e.target.value)}
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#5BB8C5]"
+                  className="w-full rounded-lg text-sm focus:outline-none"
+                  style={{ border: '0.5px solid #D0D8E0', padding: '10px 12px', color: '#1B3A5C' }}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">סוג טיפול</label>
+                <label className="block text-sm font-medium mb-1.5" style={{ color: '#1B3A5C' }}>סוג טיפול</label>
                 <select
                   value={type}
                   onChange={e => setType(e.target.value)}
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#5BB8C5]"
+                  className="w-full rounded-lg text-sm focus:outline-none"
+                  style={{ border: '0.5px solid #D0D8E0', padding: '10px 12px', color: '#1B3A5C' }}
                 >
                   <option value="">בחר...</option>
                   {TREATMENT_TYPES.map(t => <option key={t}>{t}</option>)}
@@ -164,8 +164,10 @@ function AddClientDialog({ onClose, onAdd }: {
             <button
               onClick={handleAdd}
               disabled={saving}
-              className="w-full text-sm font-medium text-white py-3 rounded-xl hover:opacity-90 transition-colors disabled:opacity-60"
-              style={{ background: '#5BB8C5' }}
+              className="w-full text-sm font-semibold text-white py-3 rounded-xl transition-all disabled:opacity-60"
+              style={{ background: '#1B3A5C' }}
+              onMouseEnter={e => { if (!saving) (e.currentTarget.style.background = '#2A6B8A') }}
+              onMouseLeave={e => { if (!saving) (e.currentTarget.style.background = '#1B3A5C') }}
             >
               {saving ? 'מוסיף...' : 'הוספה ליום'}
             </button>
@@ -218,102 +220,121 @@ export function DailyView() {
 
   return (
     <div className="max-w-2xl mx-auto">
+      {/* Header row */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-xl font-bold text-slate-800">יום עבודה</h1>
-          <p className="text-sm text-slate-500 mt-0.5">
+          <h1 className="text-xl font-bold" style={{ color: '#1B3A5C' }}>יום עבודה</h1>
+          <p className="text-sm mt-0.5" style={{ color: '#7A8A9A' }}>
             {isHe ? formatDateHebrew(date) : formatDateEnglish(date)}
           </p>
         </div>
         <button
           onClick={() => setShowDialog(true)}
-          className="flex items-center gap-2 text-sm font-medium text-white px-4 py-2 rounded-lg hover:opacity-90 transition-colors"
-          style={{ background: '#5BB8C5' }}
+          className="flex items-center gap-2 text-sm font-semibold text-white px-4 py-2.5 rounded-xl transition-all"
+          style={{ background: '#1B3A5C' }}
+          onMouseEnter={e => (e.currentTarget.style.background = '#2A6B8A')}
+          onMouseLeave={e => (e.currentTarget.style.background = '#1B3A5C')}
         >
           <PlusCircle size={16} />
-          הוספת לקוח ליום
+          הוספת לקוח
         </button>
       </div>
 
+      {/* Loading skeleton */}
       {loading ? (
         <div className="space-y-3">
           {[1, 2].map(i => (
-            <div key={i} className="bg-white rounded-xl border border-slate-200 p-4 animate-pulse">
+            <div key={i} className="bg-white rounded-xl p-4 animate-pulse" style={{ border: '0.5px solid #D0D8E0' }}>
               <div className="flex gap-3">
-                <div className="w-10 h-10 rounded-full bg-slate-200" />
+                <div className="w-10 h-10 rounded-full" style={{ background: '#E8EEF4' }} />
                 <div className="flex-1 space-y-2">
-                  <div className="h-4 w-32 bg-slate-200 rounded" />
-                  <div className="h-3 w-24 bg-slate-100 rounded" />
+                  <div className="h-4 w-32 rounded" style={{ background: '#E8EEF4' }} />
+                  <div className="h-3 w-24 rounded" style={{ background: '#F0F4F8' }} />
                 </div>
               </div>
             </div>
           ))}
         </div>
       ) : sorted.length === 0 ? (
-        <div className="bg-white rounded-xl border border-slate-200 p-10 text-center">
-          <div className="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center mx-auto mb-3">
-            <ClipboardList size={24} className="text-slate-400" />
+        /* Empty state */
+        <div className="bg-white rounded-xl p-10 text-center" style={{ border: '0.5px solid #D0D8E0' }}>
+          <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3" style={{ background: '#EAF6F9' }}>
+            <ClipboardList size={24} style={{ color: '#7EC8D8' }} />
           </div>
-          <p className="text-slate-500 text-sm mb-1">אין לקוחות מתוכננים להיום</p>
+          <p className="text-sm mb-3" style={{ color: '#7A8A9A' }}>אין לקוחות מתוכננים להיום</p>
           <button
             onClick={() => setShowDialog(true)}
-            className="text-sm text-[#5BB8C5] hover:underline mt-1"
+            className="text-sm font-medium px-4 py-2 rounded-lg transition-all"
+            style={{ border: '0.5px solid #2A6B8A', color: '#2A6B8A' }}
           >
             הוסיפי לקוח ליום
           </button>
         </div>
       ) : (
+        /* Schedule list */
         <div className="space-y-3">
-          {sorted.map((entry, i) => {
-            const colorCls = entry.treatment_type
-              ? (TREATMENT_COLORS[entry.treatment_type] ?? 'bg-slate-50 text-slate-700 border-slate-200')
-              : ''
+          {sorted.map((entry) => {
+            const style = entry.treatment_type
+              ? (TREATMENT_STYLES[entry.treatment_type] ?? { bg: '#F2F4F6', color: '#4A5568' })
+              : null
+
             return (
               <div
                 key={entry.id}
-                className="bg-white rounded-xl border border-slate-200 p-4 hover:shadow-sm transition-shadow"
+                className="bg-white rounded-xl p-4 transition-shadow hover:shadow-sm"
+                style={{ border: '0.5px solid #D0D8E0' }}
               >
                 <div className="flex items-start gap-3">
+                  {/* Avatar + time */}
                   <div className="flex-shrink-0 flex flex-col items-center gap-1">
                     <div
                       className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
-                      style={{ background: '#5BB8C5' }}
+                      style={{ background: '#2A6B8A' }}
                     >
                       {entry.client.pet_name[0]}
                     </div>
                     {entry.arrival_time && (
-                      <div className="flex items-center gap-0.5 text-xs text-slate-400">
+                      <div className="flex items-center gap-0.5 text-xs" style={{ color: '#7A8A9A' }}>
                         <Clock size={10} />
                         {entry.arrival_time.slice(0, 5)}
                       </div>
                     )}
                   </div>
 
+                  {/* Info */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <p className="font-semibold text-slate-800">{entry.client.pet_name}</p>
+                      <p className="font-bold text-sm" style={{ color: '#1B3A5C' }}>{entry.client.pet_name}</p>
                       {entry.client.pet_breed && (
-                        <span className="text-xs text-slate-400">{entry.client.pet_breed}</span>
+                        <span className="text-xs" style={{ color: '#AAB8C5' }}>{entry.client.pet_breed}</span>
                       )}
                     </div>
-                    <p className="text-xs text-slate-500 mt-0.5">{entry.client.owner_name}</p>
-                    {entry.treatment_type && (
-                      <span className={cn('inline-block mt-2 text-xs px-2 py-0.5 rounded-full border', colorCls)}>
+                    <p className="text-xs mt-0.5" style={{ color: '#7A8A9A' }}>{entry.client.owner_name}</p>
+                    {style && (
+                      <span
+                        className="inline-block mt-2 text-xs px-2.5 py-1 rounded-full font-medium"
+                        style={{ background: style.bg, color: style.color }}
+                      >
                         {entry.treatment_type}
                       </span>
                     )}
                   </div>
 
+                  {/* Actions */}
                   <div className="flex items-center gap-2 shrink-0">
                     <Link
                       to={`/clients/${entry.client_id}/treatment/new`}
-                      className="text-xs font-medium text-[#5BB8C5] border border-[#5BB8C5]/30 px-2.5 py-1.5 rounded-lg hover:bg-[#5BB8C5]/10 transition-colors"
+                      className="text-xs font-medium px-3 py-1.5 rounded-lg transition-colors"
+                      style={{ border: '0.5px solid #2A6B8A', color: '#2A6B8A' }}
                     >
                       תיעוד
                     </Link>
                     <button
                       onClick={() => handleRemove(entry.id)}
-                      className="text-slate-300 hover:text-red-400 transition-colors p-1"
+                      className="p-1 transition-colors"
+                      style={{ color: '#D0D8E0' }}
+                      onMouseEnter={e => (e.currentTarget.style.color = '#DC2626')}
+                      onMouseLeave={e => (e.currentTarget.style.color = '#D0D8E0')}
                     >
                       <X size={15} />
                     </button>
