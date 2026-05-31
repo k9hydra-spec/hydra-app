@@ -11,7 +11,9 @@
       "mcp__Claude_Preview__preview_start",
       "Bash(git remote *)",
       "Bash(git branch *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(ls -la \"/Users/ronisbn/Downloads/\" | grep -i hydra; ls -la \"/Users/ronisbn/hydra app/public/\")",
+      "Bash(python3 -c ' *)"
     ]
   }
 }
