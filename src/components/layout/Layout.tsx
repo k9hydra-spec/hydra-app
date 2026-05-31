@@ -6,8 +6,9 @@ import { Header, SidebarLangSwitch } from './Header'
 export function Layout() {
   return (
     <div className="flex h-dvh bg-white overflow-hidden">
-      {/* Desktop sidebar */}
-      <div className="hidden md:flex flex-col w-64 shrink-0 border-e border-slate-200 bg-white shadow-sm overflow-y-auto">
+
+      {/* Desktop sidebar — right side in RTL */}
+      <div className="hidden md:flex flex-col w-64 shrink-0 border-s border-slate-200 bg-white overflow-y-auto order-last">
         <Sidebar />
         <SidebarLangSwitch />
       </div>
@@ -17,10 +18,17 @@ export function Layout() {
         {/* Mobile header */}
         <Header />
 
-        {/* Scrollable content */}
-        <main className="flex-1 overflow-y-auto px-4 py-5 md:px-6 md:py-6"
-          style={{ paddingBottom: 'calc(72px + env(safe-area-inset-bottom))' }}>
-          <Outlet />
+        {/* Page content */}
+        <main
+          className="flex-1 overflow-y-auto"
+          style={{
+            padding: '20px 16px',
+            paddingBottom: 'calc(80px + env(safe-area-inset-bottom))',
+          }}
+        >
+          <div className="max-w-2xl mx-auto w-full">
+            <Outlet />
+          </div>
         </main>
       </div>
 
