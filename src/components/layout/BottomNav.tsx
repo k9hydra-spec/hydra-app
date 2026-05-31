@@ -27,7 +27,7 @@ export function BottomNav() {
             className={({ isActive }) =>
               cn(
                 'flex-1 flex flex-col items-center gap-1 py-2.5 text-xs font-medium transition-colors',
-                isActive ? 'text-[#1D9E75]' : 'text-slate-500'
+                isActive ? 'text-[#5BB8C5]' : 'text-slate-500'
               )
             }
           >

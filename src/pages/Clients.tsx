@@ -45,7 +45,7 @@ export function Clients() {
         <Link
           to="/clients/new"
           className="flex items-center gap-2 text-sm font-medium text-white px-4 py-2 rounded-lg hover:opacity-90 transition-colors"
-          style={{ background: '#1D9E75' }}
+          style={{ background: '#5BB8C5' }}
         >
           <PlusCircle size={16} />
           {t('clients.newClient')}
@@ -59,7 +59,7 @@ export function Clients() {
           value={query}
           onChange={e => setQuery(e.target.value)}
           placeholder={t('clients.search')}
-          className="w-full bg-white border border-slate-200 rounded-lg ps-9 pe-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75]"
+          className="w-full bg-white border border-slate-200 rounded-lg ps-9 pe-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#5BB8C5]/30 focus:border-[#5BB8C5]"
         />
       </div>
 
@@ -95,12 +95,12 @@ export function Clients() {
               <Link
                 key={client.id}
                 to={`/clients/${client.id}`}
-                className="flex items-center justify-between bg-white rounded-xl border border-slate-200 px-4 py-3.5 hover:border-[#1D9E75]/40 hover:shadow-sm transition-all group"
+                className="flex items-center justify-between bg-white rounded-xl border border-slate-200 px-4 py-3.5 hover:border-[#5BB8C5]/40 hover:shadow-sm transition-all group"
               >
                 <div className="flex items-center gap-3">
                   <div
                     className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0"
-                    style={{ background: '#1D9E75' }}
+                    style={{ background: '#5BB8C5' }}
                   >
                     {client.pet_name[0]}
                   </div>
@@ -124,7 +124,7 @@ export function Clients() {
                       {client.insurance_company}
                     </span>
                   )}
-                  <ChevronEnd size={16} className="text-slate-300 group-hover:text-[#1D9E75] transition-colors" />
+                  <ChevronEnd size={16} className="text-slate-300 group-hover:text-[#5BB8C5] transition-colors" />
                 </div>
               </Link>
             )

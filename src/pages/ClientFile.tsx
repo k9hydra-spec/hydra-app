@@ -65,7 +65,7 @@ export function ClientFile() {
     return (
       <div className="max-w-2xl mx-auto text-center py-12">
         <p className="text-slate-500">לקוח לא נמצא</p>
-        <Link to="/clients" className="text-[#1D9E75] text-sm mt-2 inline-block">חזרה לרשימה</Link>
+        <Link to="/clients" className="text-[#5BB8C5] text-sm mt-2 inline-block">חזרה לרשימה</Link>
       </div>
     )
   }
@@ -79,7 +79,7 @@ export function ClientFile() {
         <div className="flex items-center gap-3 flex-1">
           <div
             className="w-11 h-11 rounded-full flex items-center justify-center text-white text-base font-bold shrink-0"
-            style={{ background: '#1D9E75' }}
+            style={{ background: '#5BB8C5' }}
           >
             {client.pet_name[0]}
           </div>
@@ -94,7 +94,7 @@ export function ClientFile() {
         <Link
           to={`/clients/${id}/treatment/new`}
           className="flex items-center gap-1.5 text-sm font-medium text-white px-3 py-2 rounded-lg hover:opacity-90 transition-colors shrink-0"
-          style={{ background: '#1D9E75' }}
+          style={{ background: '#5BB8C5' }}
         >
           <PlusCircle size={15} />
           תיעוד טיפול
@@ -109,7 +109,7 @@ export function ClientFile() {
             className={cn(
               'flex items-center gap-2 px-4 py-2.5 text-sm font-medium border-b-2 transition-colors -mb-px',
               tab === tid
-                ? 'border-[#1D9E75] text-[#1D9E75]'
+                ? 'border-[#5BB8C5] text-[#5BB8C5]'
                 : 'border-transparent text-slate-500 hover:text-slate-700'
             )}
           >
@@ -122,7 +122,7 @@ export function ClientFile() {
       {tab === 'medical' && (
         <div className="space-y-4">
           <section className="bg-white rounded-xl border border-slate-200 p-5">
-            <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-3">פרטי בעל החיים</h2>
+            <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-3">פרטי בעל החיים</h2>
             <InfoRow label="שם" value={client.pet_name} />
             <InfoRow label="גזע" value={client.pet_breed} />
             <InfoRow label="תאריך לידה" value={client.pet_dob} />
@@ -132,7 +132,7 @@ export function ClientFile() {
           </section>
 
           <section className="bg-white rounded-xl border border-slate-200 p-5">
-            <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-3">פרטי הבעלים</h2>
+            <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-3">פרטי הבעלים</h2>
             <InfoRow label="שם" value={client.owner_name} />
             <InfoRow label="טלפון" value={client.owner_phone} />
             <InfoRow label="אימייל" value={client.owner_email} />
@@ -145,7 +145,7 @@ export function ClientFile() {
           {latestAssessment ? (
             <section className="bg-white rounded-xl border border-slate-200 p-5">
               <div className="flex items-center justify-between mb-3">
-                <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide">אבחון ראשוני</h2>
+                <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide">אבחון ראשוני</h2>
                 <span className="text-xs text-slate-400">{latestAssessment.date}</span>
               </div>
               <InfoRow label="סיבת הגעה" value={latestAssessment.reason} />
@@ -162,7 +162,7 @@ export function ClientFile() {
               <p className="text-slate-500 text-sm mb-3">אין אבחון ראשוני</p>
               <Link
                 to={`/clients/${id}/assessment/new`}
-                className="inline-flex items-center gap-2 text-sm font-medium text-[#1D9E75] hover:underline"
+                className="inline-flex items-center gap-2 text-sm font-medium text-[#5BB8C5] hover:underline"
               >
                 <PlusCircle size={15} />
                 הוסף אבחון
@@ -178,7 +178,7 @@ export function ClientFile() {
             <Link
               to={`/clients/${id}/treatment/new`}
               className="flex items-center gap-2 text-sm font-medium text-white px-4 py-2 rounded-lg hover:opacity-90 transition-colors"
-              style={{ background: '#1D9E75' }}
+              style={{ background: '#5BB8C5' }}
             >
               <PlusCircle size={15} />
               תיעוד טיפול חדש
@@ -195,14 +195,14 @@ export function ClientFile() {
                 key={t.id}
                 className={cn(
                   'bg-white rounded-xl border p-4',
-                  i === 0 ? 'border-[#1D9E75]/40 ring-1 ring-[#1D9E75]/20' : 'border-slate-200'
+                  i === 0 ? 'border-[#5BB8C5]/40 ring-1 ring-[#5BB8C5]/20' : 'border-slate-200'
                 )}
               >
                 <div className="flex items-start justify-between mb-2">
                   <div>
                     <span className="text-sm font-semibold text-slate-800">{t.date}</span>
                     {t.in_series && (
-                      <span className="ms-2 text-xs bg-[#1D9E75]/10 text-[#1D9E75] px-2 py-0.5 rounded-full">
+                      <span className="ms-2 text-xs bg-[#5BB8C5]/10 text-[#5BB8C5] px-2 py-0.5 rounded-full">
                         {t.series_number}/{t.series_total}
                       </span>
                     )}
@@ -235,13 +235,13 @@ export function ClientFile() {
             <Link
               key={to}
               to={`/clients/${id}/${to}`}
-              className="flex items-center justify-between bg-white rounded-xl border border-slate-200 px-5 py-4 hover:border-[#1D9E75]/40 hover:shadow-sm transition-all group"
+              className="flex items-center justify-between bg-white rounded-xl border border-slate-200 px-5 py-4 hover:border-[#5BB8C5]/40 hover:shadow-sm transition-all group"
             >
               <div>
                 <p className="font-medium text-slate-800">{label}</p>
                 <p className="text-xs text-slate-500 mt-0.5">{desc}</p>
               </div>
-              <ChevronLeft size={16} className="text-slate-300 group-hover:text-[#1D9E75] transition-colors" />
+              <ChevronLeft size={16} className="text-slate-300 group-hover:text-[#5BB8C5] transition-colors" />
             </Link>
           ))}
         </div>

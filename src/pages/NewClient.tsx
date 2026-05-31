@@ -15,7 +15,7 @@ function Field({ label, required, children }: { label: string; required?: boolea
 }
 
 const inputCls =
-  'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75]'
+  'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5BB8C5]/30 focus:border-[#5BB8C5]'
 
 export function NewClient() {
   const { t } = useTranslation()
@@ -83,7 +83,7 @@ export function NewClient() {
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <section className="bg-white rounded-xl border border-slate-200 p-5">
-          <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-4">פרטי בעל החיים</h2>
+          <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-4">פרטי בעל החיים</h2>
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
               <Field label="שם בעל החיים" required>
@@ -112,7 +112,7 @@ export function NewClient() {
                 id="neutered"
                 checked={form.pet_neutered}
                 onChange={set('pet_neutered')}
-                className="w-4 h-4 accent-[#1D9E75]"
+                className="w-4 h-4 accent-[#5BB8C5]"
               />
               <label htmlFor="neutered" className="text-sm text-slate-700">מעוקר / מסורסת</label>
             </div>
@@ -120,7 +120,7 @@ export function NewClient() {
         </section>
 
         <section className="bg-white rounded-xl border border-slate-200 p-5">
-          <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-4">פרטי הבעלים</h2>
+          <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-4">פרטי הבעלים</h2>
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
               <Field label="שם הבעלים" required>
@@ -142,7 +142,7 @@ export function NewClient() {
         </section>
 
         <section className="bg-white rounded-xl border border-slate-200 p-5">
-          <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-4">מידע רפואי</h2>
+          <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-4">מידע רפואי</h2>
           <div className="grid grid-cols-2 gap-4">
             <Field label="וטרינר מטפל">
               <input className={inputCls} value={form.vet_name} onChange={set('vet_name')} />
@@ -167,7 +167,7 @@ export function NewClient() {
             type="submit"
             disabled={saving}
             className="flex-1 text-sm font-medium text-white py-3 rounded-lg hover:opacity-90 transition-colors disabled:opacity-60"
-            style={{ background: '#1D9E75' }}
+            style={{ background: '#5BB8C5' }}
           >
             {saving ? 'שומר...' : t('newClient.save')}
           </button>

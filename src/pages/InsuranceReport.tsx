@@ -9,7 +9,7 @@ import type { Client, Assessment, Treatment } from '@/lib/supabase'
 import { InsuranceReportPDF } from '@/reports/InsuranceReportPDF'
 import { cn } from '@/lib/utils'
 
-const inputCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75]'
+const inputCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5BB8C5]/30 focus:border-[#5BB8C5]'
 
 export function InsuranceReport() {
   const { id } = useParams<{ id: string }>()
@@ -96,16 +96,16 @@ export function InsuranceReport() {
           <h1 className="text-xl font-bold text-slate-800">דוח לביטוח</h1>
           <p className="text-xs text-slate-500">{client.pet_name} · {client.owner_name}</p>
         </div>
-        <div className="flex items-center gap-2 bg-[#1D9E75]/10 rounded-xl px-3 py-2">
-          <FileText size={15} className="text-[#1D9E75]" />
-          <span className="text-sm font-semibold text-[#1D9E75]">{filteredCount} טיפולים</span>
+        <div className="flex items-center gap-2 bg-[#5BB8C5]/10 rounded-xl px-3 py-2">
+          <FileText size={15} className="text-[#5BB8C5]" />
+          <span className="text-sm font-semibold text-[#5BB8C5]">{filteredCount} טיפולים</span>
         </div>
       </div>
 
       <div className="space-y-5">
         {/* Clinic details */}
         <section className="bg-white rounded-xl border border-slate-200 p-5">
-          <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-4">פרטי הקליניקה</h2>
+          <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-4">פרטי הקליניקה</h2>
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
               <label className="block text-sm font-medium text-slate-700 mb-1.5">שם הקליניקה</label>
@@ -128,7 +128,7 @@ export function InsuranceReport() {
 
         {/* Date range */}
         <section className="bg-white rounded-xl border border-slate-200 p-5">
-          <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-4">טווח תאריכים</h2>
+          <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-4">טווח תאריכים</h2>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1.5">מתאריך</label>
@@ -148,13 +148,13 @@ export function InsuranceReport() {
 
         {/* Options */}
         <section className="bg-white rounded-xl border border-slate-200 p-5">
-          <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-4">אפשרויות הדוח</h2>
+          <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-4">אפשרויות הדוח</h2>
           <label className="flex items-center gap-3 cursor-pointer">
             <input
               type="checkbox"
               checked={includeRecommendations}
               onChange={e => setIncludeRecommendations(e.target.checked)}
-              className="w-4 h-4 accent-[#1D9E75]"
+              className="w-4 h-4 accent-[#5BB8C5]"
             />
             <span className="text-sm text-slate-700">כלול סיכום והמלצות</span>
           </label>
@@ -195,7 +195,7 @@ export function InsuranceReport() {
             <button
               onClick={() => setReady(true)}
               className="w-full flex items-center justify-center gap-2 text-sm font-medium text-white py-3.5 rounded-xl hover:opacity-90 transition-colors"
-              style={{ background: '#1D9E75' }}
+              style={{ background: '#5BB8C5' }}
             >
               <FileText size={17} />
               הכן קובץ PDF
@@ -205,7 +205,7 @@ export function InsuranceReport() {
               document={pdfDoc}
               fileName={fileName}
               className="w-full flex items-center justify-center gap-2 text-sm font-medium text-white py-3.5 rounded-xl hover:opacity-90 transition-colors"
-              style={{ background: '#1D9E75', textDecoration: 'none' }}
+              style={{ background: '#5BB8C5', textDecoration: 'none' }}
             >
               {({ loading: pdfLoading }) =>
                 pdfLoading ? (

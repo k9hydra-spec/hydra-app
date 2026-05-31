@@ -6,11 +6,11 @@ import { cn } from '@/lib/utils'
 import { createTreatment, getTreatments, getClient } from '@/lib/api'
 import type { Client } from '@/lib/supabase'
 
-const inputCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75]'
-const textareaCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75] resize-none'
+const inputCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5BB8C5]/30 focus:border-[#5BB8C5]'
+const textareaCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5BB8C5]/30 focus:border-[#5BB8C5] resize-none'
 
 function SectionTitle({ children }: { children: string }) {
-  return <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-4">{children}</h2>
+  return <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-4">{children}</h2>
 }
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
@@ -29,9 +29,9 @@ function Toggle({ label, checked, onChange }: { label: string; checked: boolean;
       onClick={() => onChange(!checked)}
       className={cn(
         'flex items-center gap-2 px-3 py-2 rounded-lg border text-sm font-medium transition-colors',
-        checked ? 'text-white border-[#1D9E75]' : 'text-slate-600 border-slate-200 hover:border-[#1D9E75]/50'
+        checked ? 'text-white border-[#5BB8C5]' : 'text-slate-600 border-slate-200 hover:border-[#5BB8C5]/50'
       )}
-      style={checked ? { background: '#1D9E75' } : {}}
+      style={checked ? { background: '#5BB8C5' } : {}}
     >
       {label}
     </button>
@@ -91,10 +91,10 @@ function MultiSelect({ options, selected, onChange }: {
           className={cn(
             'px-2.5 py-1.5 rounded-lg border text-xs font-medium transition-colors',
             selected.includes(opt)
-              ? 'text-white border-[#1D9E75]'
-              : 'text-slate-600 border-slate-200 hover:border-[#1D9E75]/50'
+              ? 'text-white border-[#5BB8C5]'
+              : 'text-slate-600 border-slate-200 hover:border-[#5BB8C5]/50'
           )}
-          style={selected.includes(opt) ? { background: '#1D9E75' } : {}}
+          style={selected.includes(opt) ? { background: '#5BB8C5' } : {}}
         >
           {opt}
         </button>
@@ -262,7 +262,7 @@ export function TreatmentForm() {
                 id="in_series"
                 checked={form.in_series}
                 onChange={e => setVal('in_series')(e.target.checked)}
-                className="w-4 h-4 accent-[#1D9E75]"
+                className="w-4 h-4 accent-[#5BB8C5]"
               />
               <label htmlFor="in_series" className="text-sm text-slate-700">חלק מסדרה</label>
             </div>
@@ -302,7 +302,7 @@ export function TreatmentForm() {
                 <Toggle label="שוקוויב (ESWT)" checked={form.eswt_performed} onChange={v => setVal('eswt_performed')(v)} />
               </div>
               {form.eswt_performed && (
-                <div className="ps-4 border-s-2 border-[#1D9E75]/30 space-y-3">
+                <div className="ps-4 border-s-2 border-[#5BB8C5]/30 space-y-3">
                   <p className="text-xs font-medium text-slate-500 mb-2">Piezowave2 ESWT</p>
                   <div className="grid grid-cols-2 gap-3">
                     <Field label="Therapy source">
@@ -335,7 +335,7 @@ export function TreatmentForm() {
                 <Toggle label="לייזר" checked={form.laser_performed} onChange={v => setVal('laser_performed')(v)} />
               </div>
               {form.laser_performed && (
-                <div className="ps-4 border-s-2 border-[#1D9E75]/30">
+                <div className="ps-4 border-s-2 border-[#5BB8C5]/30">
                   <Field label="אזורי טיפול">
                     <MultiSelect options={ESWT_AREAS} selected={laserAreas} onChange={setLaserAreas} />
                   </Field>
@@ -352,7 +352,7 @@ export function TreatmentForm() {
                 <Toggle label="PROM" checked={form.prom_performed} onChange={v => setVal('prom_performed')(v)} />
               </div>
               {form.prom_performed && (
-                <div className="ps-4 border-s-2 border-[#1D9E75]/30">
+                <div className="ps-4 border-s-2 border-[#5BB8C5]/30">
                   <Field label="גפיים">
                     <MultiSelect
                       options={['FL (קדמי ימני)', 'FR (קדמי שמאלי)', 'HL (אחורי ימני)', 'HR (אחורי שמאלי)']}
@@ -376,10 +376,10 @@ export function TreatmentForm() {
                     className={cn(
                       'px-2.5 py-1.5 rounded-lg border text-xs font-medium transition-colors',
                       exercises.find(e => e.name === ex)
-                        ? 'text-white border-[#1D9E75]'
-                        : 'text-slate-600 border-slate-200 hover:border-[#1D9E75]/50'
+                        ? 'text-white border-[#5BB8C5]'
+                        : 'text-slate-600 border-slate-200 hover:border-[#5BB8C5]/50'
                     )}
-                    style={exercises.find(e => e.name === ex) ? { background: '#1D9E75' } : {}}
+                    style={exercises.find(e => e.name === ex) ? { background: '#5BB8C5' } : {}}
                   >
                     {ex}
                   </button>
@@ -395,7 +395,7 @@ export function TreatmentForm() {
                         placeholder="חזרות"
                         value={ex.reps}
                         onChange={e => updateExercise(ex.name, 'reps', e.target.value)}
-                        className="w-20 border border-slate-200 rounded px-2 py-1 text-sm text-center focus:outline-none focus:border-[#1D9E75]"
+                        className="w-20 border border-slate-200 rounded px-2 py-1 text-sm text-center focus:outline-none focus:border-[#5BB8C5]"
                       />
                       <span className="text-xs text-slate-400">×</span>
                       <input
@@ -403,7 +403,7 @@ export function TreatmentForm() {
                         placeholder="סטים"
                         value={ex.sets}
                         onChange={e => updateExercise(ex.name, 'sets', e.target.value)}
-                        className="w-20 border border-slate-200 rounded px-2 py-1 text-sm text-center focus:outline-none focus:border-[#1D9E75]"
+                        className="w-20 border border-slate-200 rounded px-2 py-1 text-sm text-center focus:outline-none focus:border-[#5BB8C5]"
                       />
                       <button type="button" onClick={() => removeExercise(ex.name)} className="text-slate-300 hover:text-red-400">
                         <X size={14} />
@@ -444,7 +444,7 @@ export function TreatmentForm() {
                       type="number"
                       value={seg}
                       onChange={e => setTreadmillSegments(prev => prev.map((s, j) => j === i ? e.target.value : s))}
-                      className="w-16 border border-slate-200 rounded-lg px-2 py-2 text-sm text-center focus:outline-none focus:border-[#1D9E75]"
+                      className="w-16 border border-slate-200 rounded-lg px-2 py-2 text-sm text-center focus:outline-none focus:border-[#5BB8C5]"
                       placeholder="דק׳"
                     />
                     {treadmillSegments.length > 1 && (
@@ -461,7 +461,7 @@ export function TreatmentForm() {
                 <button
                   type="button"
                   onClick={() => setTreadmillSegments(prev => [...prev, ''])}
-                  className="flex items-center gap-1 text-xs text-[#1D9E75] hover:underline"
+                  className="flex items-center gap-1 text-xs text-[#5BB8C5] hover:underline"
                 >
                   <Plus size={13} /> הוסף קטע
                 </button>
@@ -502,7 +502,7 @@ export function TreatmentForm() {
             type="submit"
             disabled={saving}
             className="flex-1 text-sm font-medium text-white py-3 rounded-lg hover:opacity-90 transition-colors disabled:opacity-60"
-            style={{ background: '#1D9E75' }}
+            style={{ background: '#5BB8C5' }}
           >
             {saving ? 'שומר...' : 'שמירת טיפול'}
           </button>

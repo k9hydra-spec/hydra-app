@@ -27,7 +27,7 @@ export function Login() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="text-center mb-8">
-          <img src="/logo.png" alt="HYDRA" className="w-24 h-24 rounded-full object-cover mx-auto mb-4 shadow-md" />
+          <img src="/logo.png" alt="HYDRA" className="w-36 h-36 object-contain mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-slate-800">HYDRA</h1>
           <p className="text-sm text-slate-500 mt-1">מרכז הידרותרפיה ופיזיותרפיה לבעלי חיים</p>
         </div>
@@ -45,7 +45,7 @@ export function Login() {
                 onChange={e => setEmail(e.target.value)}
                 required
                 autoComplete="email"
-                className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75]"
+                className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5BB8C5]/30 focus:border-[#5BB8C5]"
                 placeholder="your@email.com"
               />
             </div>
@@ -58,7 +58,7 @@ export function Login() {
                 onChange={e => setPassword(e.target.value)}
                 required
                 autoComplete="current-password"
-                className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75]"
+                className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5BB8C5]/30 focus:border-[#5BB8C5]"
                 placeholder="••••••••"
               />
             </div>
@@ -73,7 +73,7 @@ export function Login() {
               type="submit"
               disabled={loading}
               className="w-full text-sm font-medium text-white py-3 rounded-xl hover:opacity-90 transition-colors disabled:opacity-60 mt-2"
-              style={{ background: '#1D9E75' }}
+              style={{ background: '#5BB8C5' }}
             >
               {loading ? 'מתחבר...' : 'כניסה'}
             </button>

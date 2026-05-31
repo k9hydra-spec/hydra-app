@@ -22,12 +22,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingBottom: 14,
     borderBottomWidth: 2,
-    borderBottomColor: '#1D9E75',
+    borderBottomColor: '#5BB8C5',
   },
   clinicName: {
     fontSize: 18,
     fontFamily: 'Helvetica-Bold',
-    color: '#1D9E75',
+    color: '#5BB8C5',
     textAlign: 'right',
   },
   clinicDetails: {
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 9,
     fontFamily: 'Helvetica-Bold',
-    color: '#1D9E75',
+    color: '#5BB8C5',
     textTransform: 'uppercase',
     letterSpacing: 0.8,
     marginBottom: 6,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   summaryBox: {
     backgroundColor: '#f0fdf9',
     borderWidth: 0.5,
-    borderColor: '#1D9E75',
+    borderColor: '#5BB8C5',
     borderRadius: 4,
     padding: 10,
     marginTop: 6,

@@ -8,8 +8,8 @@ import { loadSettings } from '@/lib/settings'
 import type { Client, Assessment, Treatment } from '@/lib/supabase'
 import { VetLetterPDF } from '@/reports/VetLetterPDF'
 
-const inputCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75]'
-const textareaCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75] resize-none'
+const inputCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5BB8C5]/30 focus:border-[#5BB8C5]'
+const textareaCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5BB8C5]/30 focus:border-[#5BB8C5] resize-none'
 
 export function VetLetter() {
   const { id } = useParams<{ id: string }>()
@@ -63,7 +63,7 @@ export function VetLetter() {
 
       <div className="space-y-5">
         <section className="bg-white rounded-xl border border-slate-200 p-5">
-          <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-4">פרטי הקליניקה</h2>
+          <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-4">פרטי הקליניקה</h2>
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
               <label className="block text-sm font-medium text-slate-700 mb-1.5">שם הקליניקה</label>
@@ -85,7 +85,7 @@ export function VetLetter() {
         </section>
 
         <section className="bg-white rounded-xl border border-slate-200 p-5">
-          <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-4">תוכן המכתב</h2>
+          <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-4">תוכן המכתב</h2>
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1.5">התקדמות</label>
@@ -122,7 +122,7 @@ export function VetLetter() {
             <button
               onClick={() => setReady(true)}
               className="w-full flex items-center justify-center gap-2 text-sm font-medium text-white py-3.5 rounded-xl hover:opacity-90 transition-colors"
-              style={{ background: '#1D9E75' }}
+              style={{ background: '#5BB8C5' }}
             >
               הכן מכתב PDF
             </button>
@@ -143,7 +143,7 @@ export function VetLetter() {
               }
               fileName={`מכתב_וטרינר_${client.pet_name}_${new Date().toISOString().slice(0, 10)}.pdf`}
               className="w-full flex items-center justify-center gap-2 text-sm font-medium text-white py-3.5 rounded-xl hover:opacity-90 transition-colors"
-              style={{ background: '#1D9E75', textDecoration: 'none' }}
+              style={{ background: '#5BB8C5', textDecoration: 'none' }}
             >
               {({ loading: l }) => l ? <span>מכין...</span> : <><Download size={17} /> הורד מכתב PDF</>}
             </PDFDownloadLink>

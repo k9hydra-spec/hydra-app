@@ -15,16 +15,9 @@ export function Sidebar() {
 
   return (
     <aside className="flex flex-col flex-1 bg-white">
-      <div className="px-5 py-5 border-b border-slate-100">
-        <div className="flex items-center gap-3">
-          <img src="/logo.png" alt="HYDRA" className="w-10 h-10 rounded-full object-cover shrink-0" />
-          <div>
-            <p className="font-bold text-slate-800 leading-tight">HYDRA</p>
-            <p className="text-xs text-slate-500 leading-tight">קליניקת שיקום</p>
-          </div>
-        </div>
+      <div className="px-5 py-4 border-b border-slate-100">
+        <img src="/logo.png" alt="HYDRA" className="h-16 w-auto object-contain" />
       </div>
-
       <nav className="flex-1 px-3 py-4 space-y-1">
         {navItems.map(({ key, icon: Icon, to }) => (
           <NavLink
@@ -33,15 +26,11 @@ export function Sidebar() {
             end={to === '/'}
             className={({ isActive }) =>
               cn(
-                'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
-                isActive
-                  ? 'text-white'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-800'
+                'flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors',
+                isActive ? 'text-white' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-800'
               )
             }
-            style={({ isActive }) =>
-              isActive ? { background: '#1D9E75' } : {}
-            }
+            style={({ isActive }) => isActive ? { background: '#5BB8C5' } : {}}
           >
             <Icon size={18} />
             {t(`nav.${key}`)}

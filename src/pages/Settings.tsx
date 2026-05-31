@@ -4,7 +4,7 @@ import { Building2, Globe, Check, LogOut } from 'lucide-react'
 import { loadSettings, saveSettings, type ClinicSettings } from '@/lib/settings'
 import { supabase } from '@/lib/supabase'
 
-const inputCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75]'
+const inputCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5BB8C5]/30 focus:border-[#5BB8C5]'
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
@@ -43,8 +43,8 @@ export function Settings() {
         {/* Clinic details */}
         <section className="bg-white rounded-xl border border-slate-200 p-5">
           <div className="flex items-center gap-2 mb-4">
-            <Building2 size={16} className="text-[#1D9E75]" />
-            <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide">{t('settings.clinic')}</h2>
+            <Building2 size={16} className="text-[#5BB8C5]" />
+            <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide">{t('settings.clinic')}</h2>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
@@ -79,8 +79,8 @@ export function Settings() {
         {/* Language */}
         <section className="bg-white rounded-xl border border-slate-200 p-5">
           <div className="flex items-center gap-2 mb-4">
-            <Globe size={16} className="text-[#1D9E75]" />
-            <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide">{t('settings.language')}</h2>
+            <Globe size={16} className="text-[#5BB8C5]" />
+            <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide">{t('settings.language')}</h2>
           </div>
           <div className="flex gap-3">
             {(['he', 'en'] as const).map(lang => (
@@ -90,10 +90,10 @@ export function Settings() {
                 onClick={() => setForm(prev => ({ ...prev, defaultLanguage: lang }))}
                 className={`flex-1 py-2.5 rounded-lg border text-sm font-medium transition-colors ${
                   form.defaultLanguage === lang
-                    ? 'text-white border-[#1D9E75]'
-                    : 'text-slate-600 border-slate-200 hover:border-[#1D9E75]/50'
+                    ? 'text-white border-[#5BB8C5]'
+                    : 'text-slate-600 border-slate-200 hover:border-[#5BB8C5]/50'
                 }`}
-                style={form.defaultLanguage === lang ? { background: '#1D9E75' } : {}}
+                style={form.defaultLanguage === lang ? { background: '#5BB8C5' } : {}}
               >
                 {lang === 'he' ? '🇮🇱 עברית' : '🇺🇸 English'}
               </button>
@@ -125,7 +125,7 @@ export function Settings() {
           <button
             onClick={handleSave}
             className="w-full flex items-center justify-center gap-2 text-sm font-medium text-white py-3.5 rounded-xl hover:opacity-90 transition-all"
-            style={{ background: '#1D9E75' }}
+            style={{ background: '#5BB8C5' }}
           >
             {saved ? (
               <>

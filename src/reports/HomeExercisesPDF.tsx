@@ -1,7 +1,7 @@
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer'
 import type { Client } from '@/lib/supabase'
 
-const PRIMARY = '#1D9E75'
+const PRIMARY = '#5BB8C5'
 
 const styles = StyleSheet.create({
   page: {

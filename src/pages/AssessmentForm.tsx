@@ -5,11 +5,11 @@ import { useTranslation } from 'react-i18next'
 import { cn } from '@/lib/utils'
 import { createAssessment } from '@/lib/api'
 
-const inputCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75]'
-const textareaCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75] resize-none'
+const inputCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5BB8C5]/30 focus:border-[#5BB8C5]'
+const textareaCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5BB8C5]/30 focus:border-[#5BB8C5] resize-none'
 
 function SectionTitle({ children }: { children: string }) {
-  return <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-4">{children}</h2>
+  return <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-4">{children}</h2>
 }
 
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
@@ -30,7 +30,7 @@ function CheckField({ label, checked, onChange }: { label: string; checked: bool
         type="checkbox"
         checked={checked}
         onChange={e => onChange(e.target.checked)}
-        className="w-4 h-4 accent-[#1D9E75]"
+        className="w-4 h-4 accent-[#5BB8C5]"
       />
       <span className="text-sm text-slate-700">{label}</span>
     </label>
@@ -48,10 +48,10 @@ function ScoreButtons({ value, max, onChange }: { value: number; max: number; on
           className={cn(
             'w-10 h-10 rounded-lg text-sm font-semibold border transition-colors',
             value === n
-              ? 'text-white border-[#1D9E75]'
-              : 'text-slate-600 border-slate-200 hover:border-[#1D9E75]/50'
+              ? 'text-white border-[#5BB8C5]'
+              : 'text-slate-600 border-slate-200 hover:border-[#5BB8C5]/50'
           )}
-          style={value === n ? { background: '#1D9E75' } : {}}
+          style={value === n ? { background: '#5BB8C5' } : {}}
         >
           {n}
         </button>
@@ -496,7 +496,7 @@ export function AssessmentForm() {
             type="submit"
             disabled={saving}
             className="flex-1 text-sm font-medium text-white py-3 rounded-lg hover:opacity-90 transition-colors disabled:opacity-60"
-            style={{ background: '#1D9E75' }}
+            style={{ background: '#5BB8C5' }}
           >
             {saving ? 'שומר...' : 'שמירת אבחון'}
           </button>

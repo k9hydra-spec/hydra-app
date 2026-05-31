@@ -88,7 +88,7 @@ function AddClientDialog({ onClose, onAdd }: {
                   value={query}
                   onChange={e => setQuery(e.target.value)}
                   placeholder="חיפוש לקוח..."
-                  className="w-full border border-slate-200 rounded-lg ps-9 pe-3 py-2.5 text-sm focus:outline-none focus:border-[#1D9E75]"
+                  className="w-full border border-slate-200 rounded-lg ps-9 pe-3 py-2.5 text-sm focus:outline-none focus:border-[#5BB8C5]"
                 />
               </div>
               <div className="space-y-1 max-h-52 overflow-y-auto">
@@ -101,7 +101,7 @@ function AddClientDialog({ onClose, onAdd }: {
                   >
                     <div
                       className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
-                      style={{ background: '#1D9E75' }}
+                      style={{ background: '#5BB8C5' }}
                     >
                       {c.pet_name[0]}
                     </div>
@@ -118,10 +118,10 @@ function AddClientDialog({ onClose, onAdd }: {
             </div>
           ) : (
             <div className="space-y-4">
-              <div className="flex items-center gap-3 bg-[#1D9E75]/10 rounded-xl px-4 py-3">
+              <div className="flex items-center gap-3 bg-[#5BB8C5]/10 rounded-xl px-4 py-3">
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0"
-                  style={{ background: '#1D9E75' }}
+                  style={{ background: '#5BB8C5' }}
                 >
                   {selected.pet_name[0]}
                 </div>
@@ -140,7 +140,7 @@ function AddClientDialog({ onClose, onAdd }: {
                   type="time"
                   value={time}
                   onChange={e => setTime(e.target.value)}
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#1D9E75]"
+                  className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#5BB8C5]"
                 />
               </div>
 
@@ -149,7 +149,7 @@ function AddClientDialog({ onClose, onAdd }: {
                 <select
                   value={type}
                   onChange={e => setType(e.target.value)}
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#1D9E75]"
+                  className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#5BB8C5]"
                 >
                   <option value="">בחר...</option>
                   {TREATMENT_TYPES.map(t => <option key={t}>{t}</option>)}
@@ -165,7 +165,7 @@ function AddClientDialog({ onClose, onAdd }: {
               onClick={handleAdd}
               disabled={saving}
               className="w-full text-sm font-medium text-white py-3 rounded-xl hover:opacity-90 transition-colors disabled:opacity-60"
-              style={{ background: '#1D9E75' }}
+              style={{ background: '#5BB8C5' }}
             >
               {saving ? 'מוסיף...' : 'הוספה ליום'}
             </button>
@@ -228,7 +228,7 @@ export function DailyView() {
         <button
           onClick={() => setShowDialog(true)}
           className="flex items-center gap-2 text-sm font-medium text-white px-4 py-2 rounded-lg hover:opacity-90 transition-colors"
-          style={{ background: '#1D9E75' }}
+          style={{ background: '#5BB8C5' }}
         >
           <PlusCircle size={16} />
           הוספת לקוח ליום
@@ -257,7 +257,7 @@ export function DailyView() {
           <p className="text-slate-500 text-sm mb-1">אין לקוחות מתוכננים להיום</p>
           <button
             onClick={() => setShowDialog(true)}
-            className="text-sm text-[#1D9E75] hover:underline mt-1"
+            className="text-sm text-[#5BB8C5] hover:underline mt-1"
           >
             הוסיפי לקוח ליום
           </button>
@@ -277,7 +277,7 @@ export function DailyView() {
                   <div className="flex-shrink-0 flex flex-col items-center gap-1">
                     <div
                       className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
-                      style={{ background: '#1D9E75' }}
+                      style={{ background: '#5BB8C5' }}
                     >
                       {entry.client.pet_name[0]}
                     </div>
@@ -307,7 +307,7 @@ export function DailyView() {
                   <div className="flex items-center gap-2 shrink-0">
                     <Link
                       to={`/clients/${entry.client_id}/treatment/new`}
-                      className="text-xs font-medium text-[#1D9E75] border border-[#1D9E75]/30 px-2.5 py-1.5 rounded-lg hover:bg-[#1D9E75]/10 transition-colors"
+                      className="text-xs font-medium text-[#5BB8C5] border border-[#5BB8C5]/30 px-2.5 py-1.5 rounded-lg hover:bg-[#5BB8C5]/10 transition-colors"
                     >
                       תיעוד
                     </Link>

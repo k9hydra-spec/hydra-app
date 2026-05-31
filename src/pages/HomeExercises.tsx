@@ -17,7 +17,7 @@ const HYDRO_EXERCISES = [
   'Massage', 'B.disc all 4', 'B.disc back', 'Side stepping',
 ]
 
-const inputCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/30 focus:border-[#1D9E75]'
+const inputCls = 'w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#5BB8C5]/30 focus:border-[#5BB8C5]'
 
 export function HomeExercises() {
   const { id } = useParams<{ id: string }>()
@@ -80,7 +80,7 @@ export function HomeExercises() {
       <div className="space-y-5">
         {/* Clinic + therapist */}
         <section className="bg-white rounded-xl border border-slate-200 p-5">
-          <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-4">פרטים</h2>
+          <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-4">פרטים</h2>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1.5">שם קליניקה</label>
@@ -103,7 +103,7 @@ export function HomeExercises() {
 
         {/* Exercise picker */}
         <section className="bg-white rounded-xl border border-slate-200 p-5">
-          <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-4">
+          <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-4">
             בחירת תרגילים {exercises.length > 0 && `(${exercises.length} נבחרו)`}
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -116,9 +116,9 @@ export function HomeExercises() {
                   onClick={() => toggleExercise(ex)}
                   className={cn(
                     'px-3 py-1.5 rounded-lg border text-xs font-medium transition-colors',
-                    selected ? 'text-white border-[#1D9E75]' : 'text-slate-600 border-slate-200 hover:border-[#1D9E75]/50'
+                    selected ? 'text-white border-[#5BB8C5]' : 'text-slate-600 border-slate-200 hover:border-[#5BB8C5]/50'
                   )}
-                  style={selected ? { background: '#1D9E75' } : {}}
+                  style={selected ? { background: '#5BB8C5' } : {}}
                 >
                   {ex}
                 </button>
@@ -130,7 +130,7 @@ export function HomeExercises() {
         {/* Exercise details */}
         {exercises.length > 0 && (
           <section className="bg-white rounded-xl border border-slate-200 p-5">
-            <h2 className="text-sm font-semibold text-[#1D9E75] uppercase tracking-wide mb-4">פרטי תרגילים</h2>
+            <h2 className="text-sm font-semibold text-[#5BB8C5] uppercase tracking-wide mb-4">פרטי תרגילים</h2>
             <div className="space-y-3">
               {exercises.map((ex, i) => (
                 <div key={ex.name} className="flex items-center gap-2 bg-slate-50 rounded-lg px-3 py-2.5">
@@ -141,7 +141,7 @@ export function HomeExercises() {
                     placeholder="חזרות"
                     value={ex.reps}
                     onChange={e => updateExercise(ex.name, 'reps', e.target.value)}
-                    className="w-20 border border-slate-200 rounded px-2 py-1.5 text-xs text-center focus:outline-none focus:border-[#1D9E75]"
+                    className="w-20 border border-slate-200 rounded px-2 py-1.5 text-xs text-center focus:outline-none focus:border-[#5BB8C5]"
                   />
                   <span className="text-xs text-slate-400">×</span>
                   <input
@@ -149,7 +149,7 @@ export function HomeExercises() {
                     placeholder="סטים"
                     value={ex.sets}
                     onChange={e => updateExercise(ex.name, 'sets', e.target.value)}
-                    className="w-20 border border-slate-200 rounded px-2 py-1.5 text-xs text-center focus:outline-none focus:border-[#1D9E75]"
+                    className="w-20 border border-slate-200 rounded px-2 py-1.5 text-xs text-center focus:outline-none focus:border-[#5BB8C5]"
                   />
                   <button type="button" onClick={() => toggleExercise(ex.name)} className="text-slate-300 hover:text-red-400 ms-1">
                     <X size={14} />
@@ -169,7 +169,7 @@ export function HomeExercises() {
             <button
               onClick={() => setReady(true)}
               className="w-full flex items-center justify-center gap-2 text-sm font-medium text-white py-3.5 rounded-xl hover:opacity-90 transition-colors"
-              style={{ background: '#1D9E75' }}
+              style={{ background: '#5BB8C5' }}
             >
               הכן גיליון PDF
             </button>
@@ -187,7 +187,7 @@ export function HomeExercises() {
               }
               fileName={`תרגילים_${client.pet_name}_${new Date().toISOString().slice(0, 10)}.pdf`}
               className="w-full flex items-center justify-center gap-2 text-sm font-medium text-white py-3.5 rounded-xl hover:opacity-90 transition-colors"
-              style={{ background: '#1D9E75', textDecoration: 'none' }}
+              style={{ background: '#5BB8C5', textDecoration: 'none' }}
             >
               {({ loading: l }) => l ? <span>מכין...</span> : <><Download size={17} /> הורד גיליון תרגילים PDF</>}
             </PDFDownloadLink>
